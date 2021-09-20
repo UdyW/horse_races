@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE HorseRacing>
+<HorseRacing timestamp="20210728T110749+0100">
+  <Meeting id="129250" country="Eire" status="Dormant" date="20210728" course="Galway" revision="1">
+    <Race id="1043591" date="20210728" time="1635+0100" runners="20" handicap="Yes" showcase="No" trifecta="No" stewards="None" status="Dormant" revision="2">
+      <Weather> </Weather>
+      <Going brief="good race"/>
+        <Horse id="2496725" name="Dysart Diamond" bred="IRE" status="Runner">
+            <Cloth number="1"/>
+            <Weight units="lbs" value="164" text="11st 10lbs"/>
+            <Jockey id="1177674" name="J B Foley">
+                <Allowance units="lbs" value="7"/>
+            </Jockey>
+            <Trainer id="1171" name="W P Mullins"/>
+        </Horse>
+        <Horse id="2300199" name="Ena Baie" bred="FR" status="Runner">
+	        <Cloth number="2"/>
+	        <Weight units="lbs" value="157" text="11st 3lbs"/>
+	        <Jockey id="2837" name="M P Walsh"/>
+	        <Trainer id="59464" name="C O'Dwyer"/>
+      </Horse>
+    </Race>
+  </Meeting>
+</HorseRacing>
