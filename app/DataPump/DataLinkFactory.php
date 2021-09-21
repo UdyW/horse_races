@@ -12,8 +12,7 @@ class DataLinkFactory
      */
     public function create(string $dataLinkType)
     {
-        switch ($dataLinkType)
-        {
+        switch ($dataLinkType) {
             case 'xml':
                 return new XMLDataLink();
                 break;

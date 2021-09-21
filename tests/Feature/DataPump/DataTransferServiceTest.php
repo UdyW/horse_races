@@ -23,6 +23,5 @@ class DataTransferServiceTest extends TestCase
 
         $index = config('schemaMap.horse_racing.Meeting')["meeting_id"][0];
         $this->assertTrue(true);
-
     }
 }

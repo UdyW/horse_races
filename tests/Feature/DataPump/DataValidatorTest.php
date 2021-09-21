@@ -51,6 +51,6 @@ class DataValidatorTest extends TestCase
     public function testValidareDataFunctionForBool()
     {
         $validator = $this->getObjectForTrait(\App\DataPump\DataValidator::class);
-        $this->assertEquals('false', $validator->sanatizeData('bool', 'No'));
+        $this->assertEquals(false, $validator->sanatizeData('bool', 'No'));
     }
 }

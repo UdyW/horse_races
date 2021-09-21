@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Datapump;
 
 use App\DataPump\DataLinkFactory;
@@ -27,6 +28,6 @@ class DataTransferService
 
     public function storeData(array $source)
     {
-
+        true;
     }
 }

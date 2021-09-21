@@ -2,42 +2,42 @@
 return [
     'horse_racing' => [
         'Meeting' => [
-            'meeting_id'    => ['int', ['Meeting','@attributes','id']],
-            'date'          => ['date', ['Meeting','@attributes','date']],
-            'country'       => ['string', ['Meeting','@attributes','country']],
-            'status'        => ['string', ['Meeting','@attributes','status']],
-            'course'        => ['string', ['Meeting','@attributes','course']],
-            'revision'      => ['int', ['Meeting','@attributes','revision']]
+            'meeting_id'    => ['int', ['@attributes','id']],
+            'date'          => ['date', ['@attributes','date']],
+            'country'       => ['string', ['@attributes','country']],
+            'status'        => ['string', ['@attributes','status']],
+            'course'        => ['string', ['@attributes','course']],
+            'revision'      => ['int', ['@attributes','revision']]
         ],
         'Race' => [
-            'race_id'       => ['int', ['Meeting', 'Race', '@attributes', 'id']],
-            'date'          => ['date', ['Meeting', 'Race', '@attributes', 'date']],
-            'time'          => ['time', ['Meeting', 'Race', '@attributes', 'time']],
-            'runners'       => ['int', ['Meeting', 'Race', '@attributes', 'runners']],
-            'handicap'      => ['bool', ['Meeting', 'Race', '@attributes', 'handicap']],
-            'trifecta'      => ['bool', ['Meeting', 'Race', '@attributes', 'trifecta']],
-            'stewards'      => ['string', ['Meeting', 'Race', '@attributes', 'stewards']],
-            'status'        => ['string', ['Meeting', 'Race', '@attributes', 'status']],
-            'revision'      => ['int', ['Meeting', 'Race', '@attributes', 'revision']],
-            'weather'       => ['string', ['Meeting', 'Race', 'Weather', '@attributes', 'brief']],
-            'brief'         => ['string', ['Meeting', 'Race', 'Going', '@attributes', 'brief']]
+            'race_id'       => ['int', ['@attributes', 'id']],
+            'date'          => ['date', ['@attributes', 'date']],
+            'time'          => ['time', ['@attributes', 'time']],
+            'runners'       => ['int', ['@attributes', 'runners']],
+            'handicap'      => ['bool', ['@attributes', 'handicap']],
+            'trifecta'      => ['bool', ['@attributes', 'trifecta']],
+            'stewards'      => ['string', ['@attributes', 'stewards']],
+            'status'        => ['string', ['@attributes', 'status']],
+            'revision'      => ['int', ['@attributes', 'revision']],
+            'weather'       => ['string', ['Weather', '@attributes', 'brief']],
+            'brief'         => ['string', ['Going', '@attributes', 'brief']]
         ],
         'Horse' => [
-            'horse_id'       => ['int', ['Meeting', 'Race', 'Horse', '@attributes', 'id']],
-            'name'           => ['string', ['Meeting', 'Race', 'Horse', '@attributes', 'name']],
-            'bred'           => ['string', ['Meeting', 'Race', 'Horse', '@attributes', 'bred']],
-            'status'         => ['string', ['Meeting', 'Race', 'Horse', '@attributes', 'status']],
-            'cloth_number'   => ['int', ['Meeting', 'Race', 'Horse', 'Cloth', '@attributes', 'number']],
-            'weight'         => ['int', ['Meeting', 'Race', 'Horse', 'Weight', '@attributes', 'value']],
-            'weight_text'    => ['string', ['Meeting', 'Race', 'Horse', 'Weight', '@attributes', 'text']]
+            'horse_id'       => ['int', ['@attributes', 'id']],
+            'name'           => ['string', ['@attributes', 'name']],
+            'bred'           => ['string', ['@attributes', 'bred']],
+            'status'         => ['string', ['@attributes', 'status']],
+            'cloth_number'   => ['int', ['Cloth', '@attributes', 'number']],
+            'weight'         => ['int', ['Weight', '@attributes', 'value']],
+            'weight_text'    => ['string', ['Weight', '@attributes', 'text']]
         ],
         'Jockey' => [
-            'jockey_id'     => ['int', ['Meeting', 'Race', 'Horse','Jockey', '@attributes', 'id']],
-            'name'          => ['string', ['Meeting', 'Race', 'Horse','Jockey', '@attributes', 'name']]
+            'jockey_id'     => ['int', ['@attributes', 'id']],
+            'name'          => ['string', ['@attributes', 'name']]
         ],
         'Trainer' => [
-            'trainer_id'    => ['int', ['Meeting', 'Race', 'Horse','Trainer','@attributes','id']],
-            'name'          => ['string', ['Meeting', 'Race', 'Horse','Trainer','@attributes','name']]
+            'trainer_id'    => ['int', ['@attributes','id']],
+            'name'          => ['string', ['@attributes','name']]
         ]
     ]
 ];

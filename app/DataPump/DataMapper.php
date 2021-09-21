@@ -21,56 +21,70 @@ class DataMapper
         return array_keys($schemaMap[$this->schemaMapName]);
     }
 
-    public function getValueFromMapPath(array $path)
+    public function getValueFromMapPath(array $path, array $dataSet)
     {
-        $aux = $this->sourceArray;
+        $aux = $dataSet;
         foreach ($path[1] as $pathIndex) {
             if (!array_key_exists($pathIndex, $aux)) {
                 throw new \Exception("Index path not valid", 1);
             }
 
             if (gettype($aux[$pathIndex]) === 'string') {
-                return $this->sanatizeData($path[0] ,$aux[$pathIndex]);
+                return $this->sanatizeData($path[0], $aux[$pathIndex]);
             }
             $aux = $aux[$pathIndex];
         }
     }
 
     protected $container = [];
-    public function interateThroughSourceArray(array $schemaMap, array $sourceArray )
+    public function interateThroughSourceArray(array $schemaMap, array $sourceArray)
     {
         $this->recursive($schemaMap, $sourceArray);
         return $this->container;
     }
 
-    function recursive(array $schemaMap, array $sourceArray){
-
+    protected function recursive(array $schemaMap, array $sourceArray)
+    {
         $entityList = $this->getEntitysForSchema($schemaMap);
 
-        foreach($sourceArray as $key => $value){
-            if(in_array($key, $entityList)) {
-                $model = $this->createModelFromMapArray("\App\Models\\".$key, $this->findMappingForEntity($key));
-                $model->save();
-                array_push($this->container, $model);
+        foreach ($sourceArray as $key => $value) {
+            if (is_string($key) && in_array($key, $entityList)) {
+                $models = $this->createModelFromMapArray($key, $value);
+                array_push($this->container, $models);
             }
 
-            if(is_array($value)){
+            if (is_array($value)) {
                 $this->recursive($schemaMap, $value);
             }
         }
     }
     public function findMappingForEntity(string $entity)
     {
-        return config('schemaMap.'.$this->schemaMapName.'.'.$entity);
+        return config('schemaMap.' . $this->schemaMapName . '.' . $entity);
     }
 
-    public function createModelFromMapArray(string $model, array $mapArray)
+    public function createModelFromMapArray(string $model, array $dataSet): array
     {
-        $entity = new $model();
-        foreach($mapArray as $prop=>$path) {
-            $entity->$prop = $this->getValueFromMapPath($path, $this->sourceArray);
-        }
+        $modelClassName = "\App\Models\\" . $model;
+        $entityList = array();
 
-        return $entity;
+        $mapping = $this->findMappingForEntity($model);
+
+        if (array_key_exists('@attributes', $dataSet)) {
+            $entity = new $modelClassName();
+            foreach ($mapping as $mapkey => $mapPath) {
+                $entity->$mapkey = $this->getValueFromMapPath($mapPath, $dataSet);
+            }
+            array_push($entityList, $entity);
+        } else {
+            foreach ($dataSet as $singleSet) {
+                $entity = new $modelClassName();
+                foreach ($mapping as $mapkey => $mapPath) {
+                    $entity->$mapkey = $this->getValueFromMapPath($mapPath, $singleSet);
+                }
+                array_push($entityList, $entity);
+            }
+        }
+        return $entityList;
     }
 }
