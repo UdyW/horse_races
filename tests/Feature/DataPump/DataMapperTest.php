@@ -227,7 +227,7 @@ class DataMapperTest extends TestCase
     {
         $modelContainer = $this->dataMapper->interateThroughSourceArray($this->schemaConfig, $this->source);
         $this->assertIsArray($modelContainer);
-        $this->assertEquals('7', count($modelContainer));
+        $this->assertEquals('8', count($modelContainer));
     }
 
     /**
@@ -325,6 +325,7 @@ class DataMapperTest extends TestCase
         ]);
 
         $this->assertInstanceOf(\App\Models\Horse::class, $multyModel[0]);
+
         $this->assertEquals('2', count($multyModel));
     }
 }

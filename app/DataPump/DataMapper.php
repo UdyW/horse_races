@@ -10,6 +10,8 @@ class DataMapper
 
     protected $sourceArray;
 
+    protected $container = [];
+
     public function __construct(string $schemaMapName, $sourceArray)
     {
         $this->schemaMapName    = $schemaMapName;
@@ -36,7 +38,6 @@ class DataMapper
         }
     }
 
-    protected $container = [];
     public function interateThroughSourceArray(array $schemaMap, array $sourceArray)
     {
         $this->recursive($schemaMap, $sourceArray);
@@ -50,7 +51,11 @@ class DataMapper
         foreach ($sourceArray as $key => $value) {
             if (is_string($key) && in_array($key, $entityList)) {
                 $models = $this->createModelFromMapArray($key, $value);
-                array_push($this->container, $models);
+                if(count($models) > 1) {
+                    $this->container = array_merge($this->container, $models);
+                } else {
+                    array_push($this->container, $models[0]);
+                }
             }
 
             if (is_array($value)) {

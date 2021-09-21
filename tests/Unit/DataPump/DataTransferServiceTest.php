@@ -19,6 +19,7 @@ class DataTransferServiceTest extends TestCase
     {
         $dataTransferService = new \App\DataPump\DataTransferService(
             'xml',
+            'horse_racing',
             base_path('tests/Unit/DataPump/DataLinkObjects/test.xml')
         );
 
@@ -37,6 +38,7 @@ class DataTransferServiceTest extends TestCase
     {
         $dataTransferService = new \App\DataPump\DataTransferService(
             'xml',
+            'horse_racing',
             base_path('tests/Unit/DataPump/DataLinkObjects/test.xml')
         );
         $contentArray = $dataTransferService->getResponse();
