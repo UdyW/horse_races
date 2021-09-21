@@ -51,7 +51,7 @@ class DataMapper
         foreach ($sourceArray as $key => $value) {
             if (is_string($key) && in_array($key, $entityList)) {
                 $models = $this->createModelFromMapArray($key, $value);
-                if(count($models) > 1) {
+                if (count($models) > 1) {
                     $this->container = array_merge($this->container, $models);
                 } else {
                     array_push($this->container, $models[0]);

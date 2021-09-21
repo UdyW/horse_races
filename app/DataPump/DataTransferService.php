@@ -41,7 +41,7 @@ class DataTransferService
         foreach ($models as $model) {
             try {
                 $model->save();
-            } catch (\Exception $e){
+            } catch (\Exception $e) {
                 echo $e->getMessage();
             }
         }
