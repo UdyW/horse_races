@@ -2,6 +2,10 @@
 
 namespace App\DataPump\DataLinkObjects;
 
+/**
+ * Concrete implelmentation of DataLinkInterface to get an array of data
+ * from a xml file in a given location
+ */
 class XMLDataLink implements DataLinkInterface
 {
 
@@ -10,7 +14,7 @@ class XMLDataLink implements DataLinkInterface
         return $this->readXML($dataSourcePath);
     }
 
-    private function readXML(string $xmlPath): array
+    private function readXML(string $xmlPath)
     {
         $xmlString = '';
 

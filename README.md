@@ -12,4 +12,7 @@ Check coding standerd
 `./vendor/bin/phpcs --standard=PSR12 /{folder}`
 
 run tests
-`php artisan test`
+`./vendor/bin/sail php artisan test`
+
+populate data
+`./vendor/bin/sail php artisan datapump:horse_racing`

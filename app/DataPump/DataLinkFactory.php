@@ -9,6 +9,7 @@ class DataLinkFactory
     /**
      * function to generate an instance of a concrete Data Link implementation
      * @param dataLinkType string type of the object required
+     * @return DataLinkInterface
      */
     public function create(string $dataLinkType)
     {

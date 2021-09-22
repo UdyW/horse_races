@@ -8,6 +8,8 @@ use Tests\TestCase;
 
 class DataTransferServiceTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         $this->dataTransferService = new \App\DataPump\DataTransferService(

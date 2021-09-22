@@ -31,7 +31,7 @@ class RunDataPump extends Command
     }
 
     /**
-     * Execute the console command.
+     * Command to import data from a source
      *
      * @return int
      */
